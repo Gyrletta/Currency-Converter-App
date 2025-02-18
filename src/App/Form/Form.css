@@ -26,7 +26,7 @@
 }
 
 .form__button {
-  width: 200px;
+  width: 150px;
   display: block;
   padding: 10px;
   margin: 0 auto;
@@ -36,10 +36,12 @@
   border: 0;
   cursor: pointer;
   font-size: 22px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .form__button:hover {
-  background-color: #d63c00;
+  background-color: #319936;
+  transform: scale(1.1);
 }
 
 .form__labelText {
