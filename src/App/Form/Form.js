@@ -1,5 +1,6 @@
 import React from "react";
 import { Result } from "./Result/Result";
+import "./Form.css";
 
 const Form = ({
   amount,
