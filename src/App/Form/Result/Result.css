@@ -4,3 +4,15 @@
   margin-top: 20px;
   color: #e62e00;
 }
+
+@media (max-width: 768px) {
+  .result {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .result {
+    font-size: 1rem;
+  }
+}

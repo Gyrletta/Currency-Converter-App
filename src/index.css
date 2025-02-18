@@ -22,3 +22,16 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@media (max-width: 768px) {
+  #root {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    font-size: 12px;
+  }
+}
