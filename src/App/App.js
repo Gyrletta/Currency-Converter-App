@@ -14,7 +14,12 @@ function App() {
     );
     if (!currencyData) return 0;
 
-    return amount / currencyData.rate;
+    const targetAmount = amount / currencyData.rate;
+    return {
+      sourceAmount: parseFloat(amount),
+      targetAmount: targetAmount,
+      currency: currencyData.name,
+    };
   };
 
   const formSubmit = (event) => {
@@ -38,21 +43,8 @@ function App() {
         setCurrency={setCurrency}
         formSubmit={formSubmit}
         currencies={currencies}
+        result={result}
       />
-
-      {result !== null && (
-        <p className="result">
-          <strong>
-            {amount} PLN = {result.toFixed(2)}{" "}
-            {
-              currencies.find((currencyItem) => currencyItem.short === currency)
-                ?.name
-            }
-          </strong>
-        </p>
-      )}
-
-      <p>Według średniego kursu NBP z dn 17.10.23</p>
     </div>
   );
 }

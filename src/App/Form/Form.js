@@ -1,4 +1,5 @@
 import React from "react";
+import { Result } from "./Result/Result";
 
 const Form = ({
   amount,
@@ -7,12 +8,13 @@ const Form = ({
   setCurrency,
   formSubmit,
   currencies,
+  result,
 }) => {
   return (
     <fieldset className="field">
       <form className="form" onSubmit={formSubmit}>
+        <h1 className="header">Currency Convert</h1>
         <p>
-          <h1 className="header">Currency Convert</h1>
           <label className="form__text">Kwota(PLN)*</label>
           <input
             className="form__input amount"
@@ -47,6 +49,8 @@ const Form = ({
             Przelicz!
           </button>
         </p>
+        <p>Według średniego kursu NBP z dn 17.10.23</p>
+        <Result result={result} />
       </form>
     </fieldset>
   );
