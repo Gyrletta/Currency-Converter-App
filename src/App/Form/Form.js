@@ -11,7 +11,6 @@ const Form = ({ calculateResult, result }) => {
     event.preventDefault();
 
     if (!amount || amount <= 0) {
-      alert("Kwota musi być większa niż zero");
       return;
     }
 
