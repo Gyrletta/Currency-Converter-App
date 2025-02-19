@@ -18,6 +18,11 @@ Additionally, I have integrated key features such as:
 - ✨ **Favicon implementation**
 - ✨ **Open Graph Metadata**
 
+🖼️ **Screenshot**  
+Below is a screenshot of the application interface:
+
+![Currency Converter Screenshot](./public/CurrencyConverter.PNG)
+
 ## 🛠️ Frontend Technologies
 
 Here’s what I’ve used to build this project:
