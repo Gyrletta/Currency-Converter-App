@@ -2,7 +2,7 @@
 
 ## 🚀 Explore the Website
 
-Check it out here: [Currency Converter](https://gyrletta.github.io/Currency-Converter/)
+Check it out here: [Currency Converter](https://gyrletta.github.io/Currency-Converter-App/)
 
 ## 📚 Description
 
