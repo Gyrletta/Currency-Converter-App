@@ -2,27 +2,28 @@ import React, { useState } from "react";
 import { currencies } from "./currencies";
 import Form from "./Form/Form";
 import { Clock } from "./Clock";
-import "./App.css";
+import { Wrapper } from "./styled";
 
 function App() {
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState();
 
   const calculateResult = (currency, amount) => {
-    const currencyData = currencies.find(({ short }) => short === currency);
-    if (!currencyData) return;
+    const rate = currencies.find(({ short }) => short === currency)?.rate;
+
+    if (!rate) return;
 
     setResult({
-      sourceAmount: parseFloat(amount),
-      targetAmount: parseFloat(amount) / currencyData.rate,
+      sourceAmount: +amount,
+      targetAmount: +amount / rate,
       currency,
     });
   };
 
   return (
-    <div className="container">
+    <Wrapper>
       <Clock />
       <Form calculateResult={calculateResult} result={result} />
-    </div>
+    </Wrapper>
   );
 }
 
