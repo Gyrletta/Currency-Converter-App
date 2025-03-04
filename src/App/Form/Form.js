@@ -44,7 +44,7 @@ const Form = ({ calculateResult, result }) => {
           >
             {currencies.map(({ short, name }) => (
               <option key={short} value={short}>
-                {currency.name}
+                {name}
               </option>
             ))}
           </Field>
