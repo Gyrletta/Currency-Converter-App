@@ -1,15 +1,15 @@
 import React from "react";
-import "./Result.css";
+import { Wrapper } from "./styled";
 
 export const Result = ({ result }) => (
-  <p className="result">
-    {result && (
+  <Wrapper>
+    {!!result && (
       <>
-        {result.sourceAmount.toFixed(2)}&nbsp;PLN&nbsp;=&nbsp;
+        {result.sourceAmount.toFixed(2)}&nbsp;PLN&nbsp;={" "}
         <strong>
           {result.targetAmount.toFixed(2)}&nbsp;{result.currency}
         </strong>
       </>
     )}
-  </p>
+  </Wrapper>
 );
