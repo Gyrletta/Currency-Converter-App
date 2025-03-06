@@ -5,5 +5,6 @@ export const theme = {
     alto: "#ddd",
     teal: "#008080",
     dark: "#5a5959",
+    gray: "#B0B0B0",
   },
 };
