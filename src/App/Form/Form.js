@@ -1,60 +1,104 @@
 import React, { useState } from "react";
 import { Result } from "../Form/Result/Result";
-import { currencies } from "../currencies";
-import { Button, Field, Header, Info, LabelText } from "./styled";
+import {
+  Button,
+  Field,
+  Header,
+  Info,
+  LabelText,
+  Loading,
+  Failure,
+} from "./styled";
+import { useRatesData } from "./useRatesData";
 
-const Form = ({ calculateResult, result }) => {
-  const [currency, setCurrency] = useState(currencies[0].short);
+const Form = () => {
   const [amount, setAmount] = useState("");
+  const [currency, setCurrency] = useState("");
+  const [result, setResult] = useState(null);
+  const ratesData = useRatesData();
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const calculateResult = (currency, amount) => {
+    const rate = ratesData?.rates[currency]?.value;
 
-    if (!amount || amount <= 0) {
+    if (!rate) {
+      console.error(`Brak kursu dla waluty: ${currency}`);
+      setResult(null);
       return;
     }
 
+    const parsedAmount = parseFloat(amount);
+
+    if (isNaN(parsedAmount)) {
+      alert("Proszę podać prawidłową kwotę");
+      setResult(null);
+      return;
+    }
+
+    setResult({
+      sourceAmount: parsedAmount,
+      targetAmount: parsedAmount * rate,
+      currency,
+    });
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if (!amount || !currency) {
+      alert("Proszę uzupełnić wszystkie pola.");
+      return;
+    }
     calculateResult(currency, amount);
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <Header>Currency Converter</Header>
-      <p>
-        <label>
-          <LabelText>Kwota (PLN)*</LabelText>
-          <Field
-            value={amount}
-            onChange={({ target }) => setAmount(target.value)}
-            autoFocus
-            placeholder="Wprowadź kwotę"
-            required
-            step="0.01"
-            min="0.01"
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          <LabelText>Waluta:</LabelText>
-          <Field
-            as="select"
-            value={currency}
-            onChange={({ target }) => setCurrency(target.value)}
-          >
-            {currencies.map(({ short, name }) => (
-              <option key={short} value={short}>
-                {name}
-              </option>
-            ))}
-          </Field>
-        </label>
-      </p>
-      <p>
-        <Button>Przelicz!</Button>
-      </p>
-      <Info>Według średniego kursu NBP z dn. 17.10.23</Info>
-      <Result result={result} />
+      <Form>
+        <Header>Kantor Walutowy</Header>
+        {ratesData.state === "loading" ? (
+          <Loading>Ładowanie kursów...</Loading>
+        ) : ratesData.state === "error" ? (
+          <Failure>Błąd: {ratesData.error || "Nieznany błąd"}</Failure>
+        ) : (
+          <>
+            <p>
+              <LabelText>Kwota w PLN*</LabelText>
+              <Field
+                value={amount}
+                onChange={({ target }) => setAmount(target.value)}
+                type="number"
+                min="1"
+                step="any"
+                required
+              />
+            </p>
+            <p>
+              <LabelText>Wybierz walutę</LabelText>
+              <Field
+                as="select"
+                value={currency}
+                onChange={({ target }) => setCurrency(target.value)}
+                required
+              >
+                <option value="">Wybierz walutę</option>
+                {Object.keys(ratesData.rates).map((rateKey) => (
+                  <option key={rateKey} value={rateKey}>
+                    {rateKey}
+                  </option>
+                ))}
+              </Field>
+            </p>
+            <p>
+              <Button
+                disabled={ratesData.state === "loading" || !amount || !currency}
+              >
+                Przelicz
+              </Button>
+            </p>
+            {result && <Result result={result} />}
+          </>
+        )}
+        <Info>Kursy walut pobierane są z Europejskiego Banku Centralnego.</Info>
+      </Form>
     </form>
   );
 };

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { useCurrentDate } from "./useCurrentDate";
 import { Wrapper } from "./styled";
 
@@ -15,10 +14,11 @@ const formatDate = (date) =>
 export const Clock = () => {
   const date = useCurrentDate();
 
-  return;
-  <Wrapper>
-    Dzisiaj jest
-    {""}
-    {formatDate(date)}
-  </Wrapper>;
+  return (
+    <Wrapper>
+      Dzisiaj jest
+      {""}
+      {formatDate(date)}
+    </Wrapper>
+  );
 };

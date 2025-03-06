@@ -31,6 +31,11 @@ export const Button = styled.button`
   :active {
     filter: brightness(120%);
   }
+
+  :disabled {
+    background-color: ${({ theme }) => theme.colors.gray};
+    cursor: not-allowed;
+  }
 `;
 
 export const Header = styled.h1`
@@ -41,5 +46,13 @@ export const Header = styled.h1`
 export const Info = styled.p`
   font-size: 14px;
   text-align: center;
+  color: ${({ theme }) => theme.colors.red};
+`;
+
+export const Loading = styled.p`
+  color: ${({ theme }) => theme.colors.teal};
+`;
+
+export const Failure = styled.p`
   color: ${({ theme }) => theme.colors.red};
 `;
