@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "normalize.css";
+import "typeface-lato";
 import App from "./App/App";
 import reportWebVitals from "./reportWebVitals";
 import { theme } from "./theme";
