@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Currency-Converter-App/static/css/main.59f949d6.css",
-    "main.js": "/Currency-Converter-App/static/js/main.e00acf33.js",
+    "main.js": "/Currency-Converter-App/static/js/main.c03d6696.js",
     "static/js/453.1e58026c.chunk.js": "/Currency-Converter-App/static/js/453.1e58026c.chunk.js",
     "static/media/background.png": "/Currency-Converter-App/static/media/background.5c39290c1d0c149cee26.png",
     "static/media/lato-latin-300.woff": "/Currency-Converter-App/static/media/lato-latin-300.4d96f9e685a54d1ef6cf.woff",
@@ -26,11 +26,11 @@
     "static/media/lato-latin-100italic.woff2": "/Currency-Converter-App/static/media/lato-latin-100italic.89b95baaf00652c7c3af.woff2",
     "index.html": "/Currency-Converter-App/index.html",
     "main.59f949d6.css.map": "/Currency-Converter-App/static/css/main.59f949d6.css.map",
-    "main.e00acf33.js.map": "/Currency-Converter-App/static/js/main.e00acf33.js.map",
+    "main.c03d6696.js.map": "/Currency-Converter-App/static/js/main.c03d6696.js.map",
     "453.1e58026c.chunk.js.map": "/Currency-Converter-App/static/js/453.1e58026c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.59f949d6.css",
-    "static/js/main.e00acf33.js"
+    "static/js/main.c03d6696.js"
   ]
 }
